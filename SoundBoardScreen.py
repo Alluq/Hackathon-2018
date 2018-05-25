@@ -22,7 +22,7 @@ class Sound_Board:
             i.hoverChange()
             i.draw()
         for i in self.sliders:
-            self.slider.draw()
+            i.draw()
     def get_clicked(self):
         for i in self.buttons:
             if i.clickButton():
