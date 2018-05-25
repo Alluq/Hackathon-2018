@@ -86,10 +86,10 @@ class Slider_Bar:
         self.rect[0] = self.centerp[0] - self.rect[2]/2
         self.rect[1] = self.centerp[1] - self.rect[3] / 2
 class Slider:
-    def __init__(self, screen, screenSize):
+    def __init__(self, screen, screenSize,pos):
         self.range = 120
         self.val = 0
-        self.bar = Slider_Bar((0,0,screenSize[0]*4/5,screenSize[1]/10),(125,125,125),(screenSize[0]/2,screenSize[1]*4/5),screen)
+        self.bar = Slider_Bar((0,0,screenSize[0]*4/5,screenSize[1]/10),(125,125,125),(pos[0],pos[1]),screen)
         self.bar.center()
         self.button = Slider_Button(screen, (self.bar.rect[0],self.bar.rect[1],screenSize[0]/20,screenSize[1]/10),(0,0,0), (125,125,125), Text(screen,self.bar.rect[0],self.bar.rect[1]+self.bar.rect[3]/2,self.val, pygame.font.SysFont("comicsansms",12),(0,0,0)))
     def draw(self):
