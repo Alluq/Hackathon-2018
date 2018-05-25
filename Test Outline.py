@@ -35,7 +35,13 @@ sounds = soundload()
 while main:
     screen.fill([255, 255, 255])
     gae.update()  # This draws the buttons
-
+    try:
+        playing = True
+        if playing:
+            pygame.mixer.Sound.play(sounds[gae.get_clicked()])
+        print("yep",pygame.mixer.Sound.get_length(sounds[gae.get_clicked()]), gae.get_clicked)
+    except:
+        print("nope")
 
     pygame.display.update()
 
