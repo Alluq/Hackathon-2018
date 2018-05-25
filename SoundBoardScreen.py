@@ -17,3 +17,8 @@ class Sound_Board:
         for i in self.buttons:
             i.hoverChange()
             i.draw()
+    def get_clicked(self):
+        for i in self.buttons:
+            if i.clickButton():
+                return self.buttons.index(i)
+
