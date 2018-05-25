@@ -5,48 +5,48 @@ import time
 pygame.init()
 pygame.font.init()
 pygame.mixer.init()
-
 size = [640, 480]
+yeeting=True
 screen = pygame.display.set_mode(size)
-main = True
+font = pygame.font.SysFont("Comic Sans MS", 5)
 
-timefont = pygame.font.SysFont("Comic Sans MS", 25)
+# You need to rename the .wav files to these simplified versions
+soundnamelist = ["Chase.wav", "Classical.wav", "Scary.wav", "Techno.wav", "aliens.wav", "birds.wav", "telephone.wav", "formula1.wav", "shoes.wav", "hyena.wav", "car_engine.wav", "sawingwood.wav", "Spahget.wav", "pristine.wav", "OHI.wav"]
+soundlist = []
+soundlist.append(pygame.mixer.Sound(soundnamelist[0])) # 1
+soundlist.append(pygame.mixer.Sound(soundnamelist[1])) # 2
+soundlist.append(pygame.mixer.Sound(soundnamelist[2])) # 3
+soundlist.append(pygame.mixer.Sound(soundnamelist[3])) # 4
+soundlist.append(pygame.mixer.Sound(soundnamelist[4])) # 5
+soundlist.append(pygame.mixer.Sound(soundnamelist[5])) # 6
+soundlist.append(pygame.mixer.Sound(soundnamelist[6])) # 7
+soundlist.append(pygame.mixer.Sound(soundnamelist[7])) # 8
+soundlist.append(pygame.mixer.Sound(soundnamelist[8])) # 9
+soundlist.append(pygame.mixer.Sound(soundnamelist[9])) # 10
+soundlist.append(pygame.mixer.Sound(soundnamelist[10])) # 11
+soundlist.append(pygame.mixer.Sound(soundnamelist[11])) # 12
+soundlist.append(pygame.mixer.Sound(soundnamelist[12])) # 13
+soundlist.append(pygame.mixer.Sound(soundnamelist[13])) # 14
+soundlist.append(pygame.mixer.Sound(soundnamelist[14])) # 15
 
-gae = SoundBoardScreen.Sound_Board(size, screen)  # initialize
+gae = SoundBoardScreen.Sound_Board(size, screen, soundnamelist)
 
-def soundload():
-    soundlist = []
-    soundlist.append(pygame.mixer.music.load("Chase.mp3")) # 1
-    soundlist.append(pygame.mixer.music.load("Classical.mp3")) # 2
-    soundlist.append(pygame.mixer.music.load("Scary.mp3")) # 3
-    soundlist.append(pygame.mixer.music.load("Techno.mp3")) # 4
-    soundlist.append(pygame.mixer.Sound("alien-spaceship_daniel_simion.wav")) # 5
-    soundlist.append(pygame.mixer.Sound("cartoon-birds-2_daniel-simion.wav")) # 6
-    soundlist.append(pygame.mixer.Sound("cartoon-telephone_daniel_simion.wav")) # 7
-    soundlist.append(pygame.mixer.Sound("formula-1-daniel_simon.wav")) # 8
-    soundlist.append(pygame.mixer.Sound("hard_shoes_1-daniel_simon.wav")) # 9
-    soundlist.append(pygame.mixer.Sound("hyena-laugh_daniel-simion.wav")) # 10
-    soundlist.append(pygame.mixer.Sound("old-car-engine_daniel_simion.wav")) # 11
-    soundlist.append(pygame.mixer.Sound("sawing-wood-daniel_simon.wav")) # 12
-    return soundlist
-
-sounds = soundload()
-
-while main:
+while yeeting:
+    if gae.get_clicked() != None:
+        print(gae.get_clicked())
+        print("help", soundlist[gae.get_clicked()])
+        pygame.mixer.Sound.play(soundlist[gae.get_clicked()])
     screen.fill([255, 255, 255])
-    gae.update()  # This draws the buttons
-    try:
-        playing = True
-        if playing:
-            pygame.mixer.Sound.play(sounds[gae.get_clicked()])
-        print("yep",pygame.mixer.Sound.get_length(sounds[gae.get_clicked()]), gae.get_clicked)
-    except:
-        print("nope")
-
+    gae.update()
+    if gae.get_clicked() != None:
+        print(gae.get_clicked())
     pygame.display.update()
 
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            main = False
+        if event.type==pygame.QUIT:
+            yeeting=False
             pygame.quit()
-
+        if event.type==pygame.KEYDOWN:
+            pass
+    if not yeeting:
+        break
