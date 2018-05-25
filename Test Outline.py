@@ -10,13 +10,11 @@ main = True
 timefont = pygame.font.SysFont("Comic Sans MS", 25)
 
 while main:
+    screen.fill([255, 255, 255])
+    pygame.display.update()
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             main = False
             pygame.quit()
-    if not main:
-        break
 
-    screen.fill([255, 255, 255])
-    print(pygame.time.get_ticks() / 1000)
-    pygame.display.update()
