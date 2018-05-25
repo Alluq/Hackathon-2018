@@ -3,7 +3,7 @@ import pygame
 class Text:
 
     #initialization function
-    def init(self, screen, x, y, text, font, color):
+    def __init__(self, screen, x, y, text, font, color):
         self.screen = screen
         self.ojx = float(x)
         self.ojy = float(y)
